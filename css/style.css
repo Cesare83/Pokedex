@@ -21,10 +21,11 @@ p {
 
 .page {
   display: grid;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 15vw 85vw;
   width: 90vw;
-  height: 100vmin;
-  margin: 5vmin;
+  max-width: 1000px;
+  height: auto;
+  margin: auto;
 }
 
 .header {

@@ -40,5 +40,5 @@ repository.push(bulbasaur, squirtle, charmander, pidgey, weedle);
 for(i=0; i<repository.length; i++) {
   var itIsBig = repository[i].height > 5? ' -  Wow, that´s big!' : '';
   document.write(repository[i].name + ' (height: ' + repository[i].height + ')' + itIsBig);
-  document.write("<br>");
+  document.write("<br> <br>");
 }
