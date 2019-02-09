@@ -1,3 +1,37 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  font-family: roboto, sans-serif;
+  color: #000000;
+}
+
+h1{
+  font-size: 3.2vmin;
+}
+
+h2 {
+  font-size: 2.8vmin;
+}
+
+p {
+  font-size: 2.5vmin;
+}
+
+.page {
+  display: grid;
+  grid-template-rows: 20% 80%;
+  width: 90vw;
+  height: 100vmin;
+  margin: 5vmin;
+}
+
+.header {
+  margin: auto;
+  text-align: center;
+}
+
+.middle {
+  padding: 2vmin;
+}
