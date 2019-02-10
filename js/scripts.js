@@ -43,11 +43,31 @@ var weedle = {
 //pushing the Pokemon objects into the repository array:
 repository.push(bulbasaur, squirtle, charmander, pidgey, weedle);
 
-//showing Pokemon values on the app:
-for(i=0; i<repository.length; i++) {
-  var itIsBig = repository[i].height > 5? ' -  Wow, that´s big!' : '';
-  document.write(repository[i].name + ' (height: ' + repository[i].height + ')' + itIsBig);
+/*showing Pokemon values on the app:
+for(i=0; i<pokemonRepository.length; i++) {
+  var itIsBig = pokemonRepository[i].height > 5? ' -  Wow, that´s big!' : '';
+  document.write(pokemonRepository[i].name + ' (height: ' + pokemonRepository[i].height + ')' + itIsBig);
   document.write("<br> <br>");
 }
+*/
 
+//get-All function:
+function getAll() {
+  return repository;
+}
+
+//add-function:
+function add(pokemon) {
+  repository.push(pokemon);
+}
+
+//return-function:
+return {
+  add: add,
+  getAll: getAll
+};
 })(); //IIFE-Wrap closes here!
+
+pokemonRepository.getAll.forEach(function(name)){
+  document.write(this.name);
+};
