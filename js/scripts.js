@@ -68,6 +68,6 @@ return {
 };
 })(); //IIFE-Wrap closes here!
 
-pokemonRepository.getAll.forEach(function(name)){
+pokemonRepository.getAll.forEach(function(name){
   document.write(this.name);
-};
+});
