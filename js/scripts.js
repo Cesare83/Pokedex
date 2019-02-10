@@ -1,5 +1,10 @@
+//IIFE-Wrap: please wrap all within it!
+var pokemonRepository = (function() {
+
+//Declaring the repository array:
 var repository = [];
 
+//Declaring the Pokemon objects:
 var bulbasaur = {
   name : 'Bulbasaur',
   height : 7,
@@ -35,10 +40,14 @@ var weedle = {
   evolution : ['weedle', 'kakuna', 'beedrill'],
 };
 
+//pushing the Pokemon objects into the repository array:
 repository.push(bulbasaur, squirtle, charmander, pidgey, weedle);
 
+//showing Pokemon values on the app:
 for(i=0; i<repository.length; i++) {
   var itIsBig = repository[i].height > 5? ' -  Wow, that´s big!' : '';
   document.write(repository[i].name + ' (height: ' + repository[i].height + ')' + itIsBig);
   document.write("<br> <br>");
 }
+
+})(); //IIFE-Wrap closes here!
