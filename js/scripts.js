@@ -1,73 +1,74 @@
 //IIFE-Wrap: please wrap all within it!
 var pokemonRepository = (function() {
 
-//Declaring the repository array:
-var repository = [];
+  //Declaring the repository array:
+  var repository = [];
 
-//Declaring the Pokemon objects:
-var bulbasaur = {
-  name : 'Bulbasaur',
-  height : 7,
-  type : ['grass', 'poison'],
-  evolution : ['bulbasaur', 'ivysaur', 'venusaur' ],
-};
+  //Declaring the Pokemon objects:
+  var bulbasaur = {
+    name : 'Bulbasaur',
+    height : 7,
+    type : ['grass', 'poison'],
+    evolution : ['bulbasaur', 'ivysaur', 'venusaur' ],
+  };
 
-var squirtle = {
-  name : 'Squirtle',
-  height : 3.5,
-  type : ['water'],
-  evolution : ['squirtle', 'wartortle', 'blastoise'],
-};
+  var squirtle = {
+    name : 'Squirtle',
+    height : 3.5,
+    type : ['water'],
+    evolution : ['squirtle', 'wartortle', 'blastoise'],
+  };
 
-var charmander = {
-  name : 'Charmander',
-  height : 7,
-  type : ['fire'],
-  evolution : ['charmander', 'charmeleon', 'charizard'],
-};
+  var charmander = {
+    name : 'Charmander',
+    height : 7,
+    type : ['fire'],
+    evolution : ['charmander', 'charmeleon', 'charizard'],
+  };
 
-var pidgey = {
-  name : 'Pidgey',
-  height : 3.5,
-  type : ['normal', 'flying'],
-  evolution : ['pidgey', 'pidgeotto', 'pidgeot'],
-};
+  var pidgey = {
+    name : 'Pidgey',
+    height : 3.5,
+    type : ['normal', 'flying'],
+    evolution : ['pidgey', 'pidgeotto', 'pidgeot'],
+  };
 
-var weedle = {
-  name : 'Weedle',
-  height : 3.5,
-  type : ['bug', 'poison'],
-  evolution : ['weedle', 'kakuna', 'beedrill'],
-};
+  var weedle = {
+    name : 'Weedle',
+    height : 3.5,
+    type : ['bug', 'poison'],
+    evolution : ['weedle', 'kakuna', 'beedrill'],
+  };
 
-//pushing the Pokemon objects into the repository array:
-repository.push(bulbasaur, squirtle, charmander, pidgey, weedle);
+  //pushing the Pokemon objects into the repository array:
+  repository.push(bulbasaur, squirtle, charmander, pidgey, weedle);
 
-/*showing Pokemon values on the app:
-for(i=0; i<pokemonRepository.length; i++) {
-  var itIsBig = pokemonRepository[i].height > 5? ' -  Wow, that´s big!' : '';
-  document.write(pokemonRepository[i].name + ' (height: ' + pokemonRepository[i].height + ')' + itIsBig);
-  document.write("<br> <br>");
-}
-*/
+  //get-All function:
+  function getAll() {
+    return repository;
+  }
 
-//get-All function:
-function getAll() {
-  return repository;
-}
+  //add-function:
+  function add(pokemon) {
+    repository.push(pokemon);
+  }
 
-//add-function:
-function add(pokemon) {
-  repository.push(pokemon);
-}
-
-//return-function:
-return {
-  add: add,
-  getAll: getAll
-};
+  //return-function:
+  return {
+    add: add,
+    getAll: getAll
+  };
 })(); //IIFE-Wrap closes here!
 
-pokemonRepository.getAll.forEach(function(name){
-  document.write(this.name);
+//getting the Objects-Array to work with:
+var b = pokemonRepository.getAll();
+
+//Displaying name and height of the Pokemons
+b.forEach(function(pokemon){
+  if(pokemon.height > 5) {
+    document.write(pokemon.name + ', height ' + pokemon.height + " - Wow, that's big!");
+  } else {
+    document.write(pokemon.name + ', height ' + pokemon.height);
+  }
+  document.write('<br> <br>');
 });
