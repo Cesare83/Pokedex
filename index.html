@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pokedex</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pokedex</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
 
-  <body>
-    <div class="page">
-      <div class="header">
-        <h1>my Pokedex</h1>
-        <h2>Learn everything about the Pokemons I am training!</h2>
-      </div>
-      <div class="middle">
-        <p><script src="js/scripts.js"></script></p>
+<body>
+  <div class="page">
+    <div class="pokedex">
+      <header>
+        <h1>Pokedex</h1>
+      </header>
+      <div class="menue">
+        <div class="image-menue">
+        </div>
+        <div class="list-menue">
+          <ul>
+            <li><p>Bulbasaur</p><button class="details-button" type="button">show details</button></li>
+            <li><p>Squirtle</p><button class="details-button" type="button">show details</button></li>
+            <li><p>Charmander</p><button class="details-button" type="button">show details</button></li>
+            <li><p>Pidgey</p><button class="details-button" type="button">show details</button></li>
+            <li><p>Weedle</p><button class="details-button" type="button">show details</button></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </body>
+
+    <footer>
+      <div class="footer-text">
+        <p>Page written and designed from Cesare Marchesi. Find more on:</p>
+      </div>
+      <div class="footer-img-container">
+        <div class="footer-img">
+          <a href="https://github.com/Cesare83" target="_blank"><img id="github-logo" src="img/iconfinder_github.png" alt="Github Logo"></a>
+          <a href="https://www.facebook.com/cesare.marchesi.7" target="_blank"><img id="facebook-logo" src="img/iconfinder_facebook.png" alt="Facebook Logo"></a>
+          <a href="https://codepen.io/Cesare83/" target="_blank"><img id="codepen-logo" src="img/iconfinder_codepen.png" alt="Codepen Logo"></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="js/scripts.js"></script>
+</body>
 </html>

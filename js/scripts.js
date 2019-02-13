@@ -61,10 +61,10 @@ var pokemonRepository = (function() {
 })(); //IIFE-Wrap closes here!
 
 //getting the Objects-Array to work with:
-var b = pokemonRepository.getAll();
+var newPokemonRepository = pokemonRepository.getAll();
 
-//Displaying name and height of the Pokemons
-b.forEach(function(pokemon){
+/*Displaying name and height of the Pokemons
+newPokemonRepository.forEach(function(pokemon){
   if(pokemon.height > 5) {
     document.write(pokemon.name + ', height ' + pokemon.height + " - Wow, that's big!");
   } else {
@@ -72,3 +72,4 @@ b.forEach(function(pokemon){
   }
   document.write('<br> <br>');
 });
+*/
