@@ -43,33 +43,48 @@ var pokemonRepository = (function() {
   //pushing the Pokemon objects into the repository array:
   repository.push(bulbasaur, squirtle, charmander, pidgey, weedle);
 
+  //add-list-item function:
+  function addListItem(pokemonItem) {
+    var listItemText = document.createTextNode(pokemonItem.name);      //$p-text
+    var buttonText = document.createTextNode("show details");          //$details-button text
+
+    var $p = document.createElement('p');                              //creating elements on DOM
+    var $detailsButton = document.createElement('button');
+    var $li = document.createElement('li');
+    var $ul = document.querySelector('ul');
+
+    $detailsButton.classList.add('details-button');                   //adding styling to the elements
+    $li.classList.add('list-item');
+    $ul.classList.add('pokemon-list');
+
+    $detailsButton.appendChild(buttonText);                           //appending them to $pokemon-list
+    $p.appendChild(listItemText);
+    $li.appendChild($p);
+    $li.appendChild($detailsButton);
+    $ul.appendChild($li);
+  }
+
   //get-All function:
   function getAll() {
     return repository;
   }
 
-  //add-function:
+  //add-Pokemon-Objects function:
   function add(pokemon) {
     repository.push(pokemon);
   }
 
-  //return-function:
+  //return function:
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    addListItem: addListItem
   };
 })(); //IIFE-Wrap closes here!
 
 //getting the Objects-Array to work with:
 var newPokemonRepository = pokemonRepository.getAll();
 
-/*Displaying name and height of the Pokemons
-newPokemonRepository.forEach(function(pokemon){
-  if(pokemon.height > 5) {
-    document.write(pokemon.name + ', height ' + pokemon.height + " - Wow, that's big!");
-  } else {
-    document.write(pokemon.name + ', height ' + pokemon.height);
-  }
-  document.write('<br> <br>');
+newPokemonRepository.forEach(function(pokemonItem) {
+  pokemonRepository.addListItem(pokemonItem);
 });
-*/

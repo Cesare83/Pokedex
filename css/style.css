@@ -52,13 +52,13 @@ header {                                          /* Header */
   padding: 2vw;
 }
 
-ul {
+.pokemon-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li {
+.list-item {
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: #ffffff;
