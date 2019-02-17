@@ -43,10 +43,15 @@ var pokemonRepository = (function() {
   //pushing the Pokemon objects into the repository array:
   repository.push(bulbasaur, squirtle, charmander, pidgey, weedle);
 
+  //show-details function:
+  function showDetails(pokemonItem) {
+    console.log(pokemonItem.name);  //testing this function with the parameter name on console
+  }
+
   //add-list-item function:
   function addListItem(pokemonItem) {
     var listItemText = document.createTextNode(pokemonItem.name);      //$p-text
-    var buttonText = document.createTextNode("show details");          //$details-button text
+    var buttonText = document.createTextNode('show details');          //$details-button text
 
     var $p = document.createElement('p');                              //creating elements on DOM
     var $detailsButton = document.createElement('button');
@@ -62,6 +67,10 @@ var pokemonRepository = (function() {
     $li.appendChild($p);
     $li.appendChild($detailsButton);
     $ul.appendChild($li);
+
+    $detailsButton.addEventListener('click', function(event) {       //show-details function
+    showDetails(pokemonItem);
+    });
   }
 
   //get-All function:
