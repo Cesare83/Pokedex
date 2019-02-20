@@ -8,29 +8,29 @@ body {
 }
 
 h1{
-  font-size: 3.2vmin;
+  font-size: 3.2vh;
 }
 
 p {
-  font-size: 2.2vmin;
+  font-size: 2.2vh;
 }
 
 .page {
   display: grid;
   grid-template-rows: 85vh 10vh;
   width: 95vw;
+  height: 95vh;
   max-width: 1000px;
-  height: auto;
   margin: 2.5vh auto;
 }
 
 .pokedex {
   display: grid;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 8% 92%;
 }
 
 header {                                          /* Header */
-  padding-left: 2vw;
+  padding-left: 2vmin;
   background-color: #d3d3d3;
 }
 
@@ -43,13 +43,14 @@ header {                                          /* Header */
 .image-menue {
   height: 100%;
   background-color: #bfbfbf;
-  padding: 2vw;
+  padding: 2vmin;
 }
 
 .list-menue {
   height: 100%;
   background-color: #e6e6e6;
-  padding: 2vw;
+  padding: 2vmin;
+  overflow: auto;
 }
 
 .pokemon-list {
@@ -59,25 +60,26 @@ header {                                          /* Header */
 }
 
 .list-item {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: #ffffff;
-  padding: 0.1vw 0 0.1vw 2vw;
-  margin: 0.6vw 0;
+  padding: 0.1vmin 0 0.1vmin 2vmin;
+  margin: 0.6vmin 0;
 }
 
 .details-button {
   text-decoration: none;
   border: none;
   font-style: inherit;
-  font-size: 2.2vmin;
+  font-size: 2.2vh;
   background-color: #e6e6e6;
-  margin: 1.2vw 2vw 1.2vw auto;
+  margin: 1.2vmin 2vmin 1.2vmin auto;
 }
 
 footer {                                          /* Footer */
   display: grid;
-  grid-template-rows: 5vmin 5vmin;
+  grid-template-rows: 50% 50%;
   text-align: center;
 }
 
@@ -96,14 +98,15 @@ footer {                                          /* Footer */
 #facebook-logo,
 #github-logo,
 #codepen-logo {
-  height: 4vmin;
+  height: 3.5vh;
   width: auto;
 }
 
 
-@media only screen and (min-width: 650px) {         /* Media queries */
+@media only screen and (min-width: 750px) {         /* Media queries */
   .menue {
-    grid-template-rows: 1fr;
+    height: 100%;
+    grid-template-rows: 100%;
     grid-template-columns: 50% 50%;
   }
 }
