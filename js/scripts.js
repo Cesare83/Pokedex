@@ -7,8 +7,8 @@ var pokemonRepository = (function() {
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   //show-details function:
-  function showDetails(pokemonItem) {
-    console.log(loadDetails(pokemonItem));
+  function showDetails(item) {
+    loadDetails(item);
   }
 
   //get-All function:
@@ -47,15 +47,15 @@ var pokemonRepository = (function() {
       // Now we add the details to the item
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = Object.keys(details.types);
+      item.types = details.types.map(function(item) {return item.type.name})
     }).catch(function (e) {
       console.error(e);
     });
   }
 
   //add-list-item function:
-  function addListItem(pokemonItem) {
-    var listItemText = document.createTextNode(pokemonItem.name);      //$p-text
+  function addListItem(pokemon) {
+    var listItemText = document.createTextNode(pokemon.name);      //$p-text
     var buttonText = document.createTextNode('show details');          //$details-button text
 
     var $p = document.createElement('p');                              //creating elements on DOM
@@ -74,7 +74,7 @@ var pokemonRepository = (function() {
     $ul.appendChild($li);
 
     $detailsButton.addEventListener('click', function(event) {       //show-details function
-      showDetails(pokemonItem);
+      console.log(pokemon.name, pokemon.detailsUrl, pokemon.height, pokemon.types, pokemon.imageUrl);
     });
   }
 
@@ -88,11 +88,9 @@ var pokemonRepository = (function() {
   };
 })(); //IIFE-Wrap closes here!
 
-pokemonRepository.loadList();
-
-//getting the Objects-Array to work with:
-var newPokemonRepository = pokemonRepository.getAll();
-
-newPokemonRepository.forEach(function(pokemonItem) {
-  pokemonRepository.addListItem(pokemonItem);
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+    pokemonRepository.loadDetails(pokemon);
+  });
 });
