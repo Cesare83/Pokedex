@@ -8,7 +8,7 @@ var pokemonRepository = (function() {
 
   //show-details function:
   function showDetails(item) {
-    loadDetails(item);
+    console.log(pokemon.name, pokemon.detailsUrl, pokemon.height, pokemon.types, pokemon.imageUrl);
   }
 
   //get-All function:
@@ -73,8 +73,8 @@ var pokemonRepository = (function() {
     $li.appendChild($detailsButton);
     $ul.appendChild($li);
 
-    $detailsButton.addEventListener('click', function(event) {       //show-details function
-      console.log(pokemon.name, pokemon.detailsUrl, pokemon.height, pokemon.types, pokemon.imageUrl);
+    $detailsButton.addEventListener('click', function(pokemon) {       //show-details function
+      showDetails(pokemon);
     });
   }
 
