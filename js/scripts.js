@@ -7,8 +7,11 @@ var pokemonRepository = (function() {
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   //show-details function:
-  function showDetails(item) {
-    console.log(pokemon.name, pokemon.detailsUrl, pokemon.height, pokemon.types, pokemon.imageUrl);
+  function showDetails(item)
+  {
+    pokemonRepository.loadDetails(item).then(function() {
+    console.log(item);
+    });
   }
 
   //get-All function:
@@ -73,7 +76,7 @@ var pokemonRepository = (function() {
     $li.appendChild($detailsButton);
     $ul.appendChild($li);
 
-    $detailsButton.addEventListener('click', function(pokemon) {       //show-details function
+    $detailsButton.addEventListener('click', function(event) {       //show-details function
       showDetails(pokemon);
     });
   }
@@ -88,9 +91,10 @@ var pokemonRepository = (function() {
   };
 })(); //IIFE-Wrap closes here!
 
+//loadList promise:
 pokemonRepository.loadList().then(function() {
+
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
-    pokemonRepository.loadDetails(pokemon);
   });
 });
