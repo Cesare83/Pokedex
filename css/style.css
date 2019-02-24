@@ -43,18 +43,18 @@ header {                                          /* Header */
 .image-menue-wrapper {
   height: 100%;
   background-color: #bfbfbf;
-  padding: 2vmin;
+  padding: 2vmin 2vmin 1vmin 2vmin;
 }
 
 .image-menue {
   height: 100%;
-  background-color: #d3d3d3;
+  background-color: #000;
 }
 
 .list-menue-wrapper {
   height: 100%;
-  background-color: #e6e6e6;
-  padding: 2vmin;
+  background-color: #bfbfbf;
+  padding: 1vmin 2vmin 2vmin 2vmin;
 }
 
 .list-menue {
@@ -74,7 +74,7 @@ header {                                          /* Header */
   grid-template-columns: 1fr 1fr;
   background-color: #ffffff;
   padding: 0.1vmin 0 0.1vmin 2vmin;
-  margin: 0.6vmin 0;
+  margin: 0vmin 0vmin 0.5vmin 0vmin;
 }
 
 .details-button {
@@ -117,5 +117,13 @@ footer {                                          /* Footer */
     height: 100%;
     grid-template-rows: 100%;
     grid-template-columns: 50% 50%;
+  }
+
+  .image-menue-wrapper {
+    padding: 2vmin 1vmin 2vmin 2vmin;
+  }
+
+  .list-menue-wrapper {
+    padding: 2vmin 2vmin 2vmin 1vmin;
   }
 }
