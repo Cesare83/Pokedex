@@ -40,16 +40,25 @@ header {                                          /* Header */
   grid-template-rows: 50% 50%;
 }
 
-.image-menue {
+.image-menue-wrapper {
   height: 100%;
   background-color: #bfbfbf;
   padding: 2vmin;
 }
 
-.list-menue {
+.image-menue {
+  height: 100%;
+  background-color: #d3d3d3;
+}
+
+.list-menue-wrapper {
   height: 100%;
   background-color: #e6e6e6;
   padding: 2vmin;
+}
+
+.list-menue {
+  height: 100%;
   overflow: auto;
 }
 
