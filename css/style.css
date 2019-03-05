@@ -15,6 +15,45 @@ p {
   font-size: 2.2vh;
 }
 
+#modal-container {                              /*Modal Container*/
+  display: none;  /*by default not showed. Visible by adding class "is-visible" via JS*/
+}
+
+#modal-container.is-visible {
+  display: grid;       /*essential to overwrite "display:none"!!*/
+  position: fixed;     /*essential for the overlap*/
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;         /*since page has a z-index of -1, 1 it´s more than enough (which is 0)*/
+}
+
+.modal {              /*showed with modal-container.is-visible via appendChild*/
+  margin: auto;
+  padding: 5%;
+  width: 80%;
+  max-width: 700px;
+  background-color: #fff;
+}
+
+.close-button {       /*closing button for the modal container*/
+  float: right;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #000;
+  text-decoration: underline;
+}
+
+.modal-image {
+  display:block;
+  height: 100%;
+  width: auto;
+  margin: auto;
+}
+
 .page {
   display: grid;
   grid-template-rows: 85vh 10vh;
@@ -22,6 +61,7 @@ p {
   height: 95vh;
   max-width: 1000px;
   margin: 2.5vh auto;
+  z-index: -1;
 }
 
 .pokedex {
