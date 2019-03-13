@@ -7,12 +7,42 @@ var pokemonRepository = (function() {
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   //Var to hide/show:
   var $modalContainer = document.querySelector('#modal-container');
+  //details-menue var:
+  var $detailsMenue = document.querySelector('#details-menue');
 
   //show-details function:
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
-    console.log(item);  //useful reminder about the object keys
+    console.log(item);  //still useful as a test
     pokemonRepository.showModal(item);
+
+    //cleaning the previous details:
+    $detailsMenue.innerHTML = '';
+
+    var detailsWrapper = document.createElement('div');
+    detailsWrapper.classList.add('details-wrapper');
+
+    var nameElement = document.createElement('p');
+    nameElement.classList.add('name-p');
+    nameElement.innerText = item.name;
+
+    var imageElement = document.createElement('img');
+    imageElement.classList.add('details-image');
+    imageElement.setAttribute("src",item.imageUrl);
+
+    var heightElement = document.createElement('p');
+    heightElement.classList.add('details-p');
+    heightElement.innerText = 'height: '+item.height;
+
+    var typesElement = document.createElement('p');
+    typesElement.classList.add('details-p');
+    typesElement.innerText='type: '+ item.types.join(', ');
+
+    detailsWrapper.appendChild(nameElement);
+    detailsWrapper.appendChild(imageElement);
+    detailsWrapper.appendChild(typesElement);
+    detailsWrapper.appendChild(heightElement);
+    $detailsMenue.appendChild(detailsWrapper);
     });
   }
 
@@ -122,6 +152,7 @@ var pokemonRepository = (function() {
     $modalContainer.classList.add('is-visible');
   }
 
+  //closing-modal via close button:
   function hideModal() {
     $modalContainer.classList.remove('is-visible');
   }
