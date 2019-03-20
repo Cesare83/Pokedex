@@ -80,14 +80,41 @@ var pokemonRepository = (function() {
     var $charmanderButton = document.querySelector('#charmander-button');
     var $squirtleButton = document.querySelector('#squirtle-button');
     $bulbasaurButton.addEventListener('click', function(event) {
-      changeColor(0);
+      confirmChoice(0);
     });
     $charmanderButton.addEventListener('click', function(event) {
-      changeColor(1);
+      confirmChoice(1);
     });
     $squirtleButton.addEventListener('click', function(event) {
-      changeColor(2);
+      confirmChoice(2);
     });
+  }
+
+  function confirmChoice(number) {
+    var $dialogButtons = document.querySelector('#dialog-buttons');
+    var $dialogText = document.querySelector('#dialog-text');
+
+    $dialogText.innerHTML = '';
+    $dialogText.innerHTML = 'Please confirm or cancel:';
+
+    $dialogButtons.classList.add('is-visible');
+    var $cancelButton = document.querySelector('#cancel-button');
+    var $confirmButton = document.querySelector('#confirm-button');
+    $cancelButton.addEventListener('click', function(event) {
+      hideConfirmChoice();
+    });
+    $confirmButton.addEventListener('click', function(event) {
+      changeColor(number);
+    });
+  }
+
+  function hideConfirmChoice() {
+    var $dialogButtons = document.querySelector('#dialog-buttons');
+    var $dialogText = document.querySelector('#dialog-text');
+
+    $dialogButtons.classList.remove('is-visible');
+    $dialogText.innerHTML = '';
+    $dialogText.innerHTML = 'Choose your favourite pokemon:';
   }
 
   function changeColor(number) {
