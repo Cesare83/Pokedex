@@ -2,6 +2,17 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary-grey: #bfbfbf;
+  --secondary-grey: #e6e6e6;
+  --primary-green: #008000;
+  --secondary-green: #99ff99;
+  --primary-red: #e60000;
+  --secondary-red: #ff9999;
+  --primary-blue: #0000e6;
+  --secondary-blue: #9999ff;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   color: #000000;
@@ -15,36 +26,98 @@ p {
   font-size: 2.2vh;
 }
 
-#modal-container {                              /*Modal Container*/
-  display: none;  /*by default not showed. Visible by adding class "is-visible" via JS*/
+button {
+  border: none;
+  background-color: inherit;
+  color: inherit;
+  font: inherit;
+  outline: inherit;
 }
 
-#modal-container.is-visible {
-  display: grid;       /*essential to overwrite "display:none"!!*/
+.green-background {
+  background-color: var(--primary-green);
+  color: white;
+}
+
+.red-background {
+  background-color: var(--primary-red);
+  color: white;
+}
+
+.blue-background {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.details-button:hover {
+  background-color: #ffd700;
+}
+
+#bulbasaur:hover {
+  background-color: var(--primary-green);
+}
+
+#charmander:hover {
+  background-color: var(--primary-red);
+}
+
+#squirtle:hover {
+  background-color: var(--primary-blue);
+}
+
+#dialog-container {                              /*Modal Container*/
+  display: grid;
   position: fixed;     /*essential for the overlap*/
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 1;         /*since page has a z-index of -1, 1 it´s more than enough (which is 0)*/
 }
 
-.modal {              /*showed with modal-container.is-visible via appendChild*/
+#dialog-container.invisible {
+  display: none;       /*essential to overwrite "display:grid"!!*/
+}
+
+.dialog-wrapper {              /*showed with modal-container.is-visible via appendChild*/
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
   margin: auto;
-  padding: 5%;
-  width: 80%;
-  max-width: 700px;
+  width: 100%;
+  max-width: 600px;
   background-color: #fff;
 }
 
-.close-button {       /*closing button for the modal container*/
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: #000;
-  text-decoration: underline;
+.centered-text {
+  margin: auto;
+}
+
+.dialog-img-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: auto;
+}
+
+.dialog-img {
+  padding: 10%;
+  height: 100%;
+  max-height: 70px;
+  width: auto;
+  border-radius: 50%;
+}
+
+.img-button {
+
+}
+
+#dialog-buttons {
+  display: none;
+}
+
+#dialog-buttons.is-visible {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .page {
@@ -59,12 +132,26 @@ p {
 
 .pokedex {
   display: grid;
-  grid-template-rows: 8% 92%;
+  grid-template-rows: auto 92%;
+  border-style: solid;
+  border-color: var(--primary-grey);
+  border-width: 5px;
 }
 
-header {                                          /* Header */
-  padding-left: 2vmin;
-  background-color: #d3d3d3;
+.pokedex.green-borders {
+  border-color: var(--primary-green);
+}
+
+.pokedex.red-borders {
+  border-color: var(--primary-red);
+}
+
+.pokedex.blue-borders {
+  border-color: var(--primary-blue);
+}
+
+header {
+  background-color: var(--primary-grey);
 }
 
 .menue {
@@ -75,11 +162,10 @@ header {                                          /* Header */
 
 .details-menue-wrapper {
   height: 100%;
-  background-color: #bfbfbf;
   padding: 2vmin 2vmin 2vmin 2vmin;
 }
 
-#details-menue {
+#details-menue {                   /* Details-screen */
   height: 100%;
   background-color: #1a1a1a;
   border-radius: 10px;
@@ -110,7 +196,6 @@ header {                                          /* Header */
 
 .list-menue-wrapper {
   height: 100%;
-  background-color: #bfbfbf;
   padding: 2vmin 2vmin 2vmin 2vmin;
 }
 
@@ -129,17 +214,16 @@ header {                                          /* Header */
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: #ffffff;
+  background-color: var(--secondary-grey);
   padding: 0.1vmin 0 0.1vmin 2vmin;
   margin: 0vmin 0vmin 0.5vmin 0vmin;
 }
 
 .details-button {
-  text-decoration: none;
-  border: none;
-  font-style: inherit;
+  border-radius: 5px;
   font-size: 2.2vh;
-  background-color: #e6e6e6;
+  color: white;
+  background-color: #f7b733;
   margin: 1.2vmin 2vmin 1.2vmin auto;
 }
 
@@ -154,7 +238,7 @@ footer {                                          /* Footer */
 }
 
 .footer-img-container {
-  display: flex;
+  display: grid;
 }
 
 .footer-img {
@@ -166,6 +250,8 @@ footer {                                          /* Footer */
 #codepen-logo {
   height: 3.5vh;
   width: auto;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 
@@ -186,5 +272,13 @@ footer {                                          /* Footer */
 
   #details-menue {
     border-radius: 25px;
+  }
+
+  .pokedex {
+    border-width: 10px;
+  }
+
+  .details-button {
+    border-radius: 10px;
   }
 }

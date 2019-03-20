@@ -5,16 +5,17 @@ var pokemonRepository = (function() {
   var repository = [];
   //API-Adress:
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-  //Var to hide/show:
-  var $modalContainer = document.querySelector('#modal-container');
+  //Dialog window to hide/show:
+  var $dialogContainer = document.querySelector('#dialog-container');
   //details-menue var:
   var $detailsMenue = document.querySelector('#details-menue');
+  //dialog
 
   //show-details function:
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function() {
     console.log(item);  //still useful as a test
-    pokemonRepository.showModal(item);
+    //pokemonRepository.showModal(item);
 
     //cleaning the previous details:
     $detailsMenue.innerHTML = '';
@@ -73,6 +74,49 @@ var pokemonRepository = (function() {
     })
   }
 
+  function showDialog() {
+  //activating dialog buttons:
+    var $bulbasaurButton = document.querySelector('#bulbasaur-button');
+    var $charmanderButton = document.querySelector('#charmander-button');
+    var $squirtleButton = document.querySelector('#squirtle-button');
+    $bulbasaurButton.addEventListener('click', function(event) {
+      changeColor(0);
+    });
+    $charmanderButton.addEventListener('click', function(event) {
+      changeColor(1);
+    });
+    $squirtleButton.addEventListener('click', function(event) {
+      changeColor(2);
+    });
+  }
+
+  function changeColor(number) {
+    var $header = document.querySelector('header');
+    var $pokedex = document.querySelector('.pokedex');
+
+    switch(number) {
+      case 0:
+      $header.classList.add('green-background');
+      $pokedex.classList.add('green-borders');
+      break;
+
+      case 1:
+      $header.classList.add('red-background');
+      $pokedex.classList.add('red-borders');
+      break;
+
+      case 2:
+      $header.classList.add('blue-background');
+      $pokedex.classList.add('blue-borders');
+      break;
+    }
+    hideDialog();
+  }
+
+  function hideDialog() {
+    $dialogContainer.classList.add('invisible');
+  }
+
   //load pokemon-details by clicking showDetailsButton:
   function loadDetails(item) {
     var url = item.detailsUrl;
@@ -113,67 +157,6 @@ var pokemonRepository = (function() {
     });
   }
 
-  //show-modal function:
-  function showModal(item) {
-
-    $modalContainer.innerHTML = '';
-
-    //creating the modal div:
-    var modal = document.createElement('div');
-    modal.classList.add('modal');
-
-    //adding html elements to the modal container:
-    var closeButtonElement = document.createElement('button'); //closing button
-    closeButtonElement.classList.add('close-button');
-    closeButtonElement.innerText = 'Close';
-    closeButtonElement.addEventListener('click', hideModal);
-
-    var titleElement = document.createElement('h1');
-    titleElement.innerText = item.name;
-
-    var heightElement = document.createElement('p');
-    heightElement.innerText = 'Height: '+item.height;
-
-    var imageElement=document.createElement('img');
-    imageElement.classList.add('modal-image');
-    imageElement.setAttribute("src",item.imageUrl);
-
-    var typesElement=document.createElement('p');
-    typesElement.innerText='Type: '+ item.types.join(', ');
-
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(titleElement);
-    modal.appendChild(imageElement);
-    modal.appendChild(typesElement);
-    modal.appendChild(heightElement);
-    $modalContainer.appendChild(modal);
-
-    //turn modal visible:
-    $modalContainer.classList.add('is-visible');
-  }
-
-  //closing-modal via close button:
-  function hideModal() {
-    $modalContainer.classList.remove('is-visible');
-  }
-
-  //escape-quit:
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && $modalContainer.classList.contains('is-visible')) {
-      hideModal();
-    }
-  });
-
-  //click-outside-window-quit:
-  $modalContainer.addEventListener('click', (e) => {
-    // Since this is also triggered when clicking INSIDE the modal container,
-    // We only want to close if the user clicks directly on the overlay
-    var target = e.target;
-    if (target === $modalContainer) {
-      hideModal();
-    }
-  });
-
   //return function:
   return {
     add: add,
@@ -181,8 +164,7 @@ var pokemonRepository = (function() {
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showModal: showModal,
-    hideModal: hideModal,
+    showDialog: showDialog,
   };
 })(); //IIFE-Wrap closes here!
 
@@ -192,3 +174,5 @@ pokemonRepository.loadList().then(function() {
     pokemonRepository.addListItem(pokemon);
   });
 });
+//activating the dialog-buttons:
+pokemonRepository.showDialog();
