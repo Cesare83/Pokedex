@@ -144,7 +144,7 @@ button {
 
 .pokedex {
   display: grid;
-  grid-template-rows: auto 92%;
+  grid-template-rows: auto 90%;
   border-style: solid;
   border-color: var(--primary-grey);
   border-width: 5px;
@@ -164,6 +164,32 @@ button {
 
 header {
   background-color: var(--primary-grey);
+}
+
+.header-inner-wrapper {
+  display: flex;
+}
+
+.pokedex-favicon {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 1%;
+  height: 5vh;
+  width: auto;
+  fill: white;
+  stroke-width: 15;
+}
+
+.favicon-red {
+  stroke: var(--primary-red);
+}
+
+.favicon-blue{
+  stroke: var(--primary-blue);
+}
+
+.favicon-green{
+  stroke: var(--primary-green);
 }
 
 .menue {
@@ -279,7 +305,7 @@ footer {                                          /* Footer */
   }
 
   .list-menue-wrapper {
-    padding: 2vmin 2vmin 2vmin 1vmin;
+    padding: 2vmin 2vmin 2vmin 2vmin;
   }
 
   #details-menue {

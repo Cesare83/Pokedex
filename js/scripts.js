@@ -126,21 +126,25 @@ var pokemonRepository = (function() {
   function changeColor() {
     var $header = document.querySelector('header');
     var $pokedex = document.querySelector('.pokedex');
+    var $title = document.querySelector('#title');
 
     switch(favouritePokemon) {
       case 0:
       $header.classList.add('green-background');
       $pokedex.classList.add('green-borders');
+      $title.innerHTML = 'Pokedex green';
       break;
 
       case 1:
       $header.classList.add('red-background');
       $pokedex.classList.add('red-borders');
+      $title.innerHTML = 'Pokedex red';
       break;
 
       case 2:
       $header.classList.add('blue-background');
       $pokedex.classList.add('blue-borders');
+      $title.innerHTML = 'Pokedex blue';
       break;
     }
     hideDialog();
