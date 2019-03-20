@@ -50,26 +50,6 @@ button {
   background-color: #ffd700;
 }
 
-#bulbasaur:hover {
-  background-color: var(--primary-green);
-}
-
-#charmander:hover {
-  background-color: var(--primary-red);
-}
-
-#squirtle:hover {
-  background-color: var(--primary-blue);
-}
-
-#cancel-button:hover {
-  color: #ff3c1a;
-}
-
-#confirm-button:hover {
-  color: #46d246;
-}
-
 #dialog-container {                              /*Modal Container*/
   display: grid;
   position: fixed;     /*essential for the overlap*/
@@ -89,6 +69,7 @@ button {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   margin: auto;
+  padding: 3%;
   width: 100%;
   max-width: 600px;
   background-color: #fff;
@@ -112,10 +93,6 @@ button {
   border-radius: 50%;
 }
 
-.img-button {
-
-}
-
 #dialog-buttons {
   display: none;
 }
@@ -127,6 +104,21 @@ button {
 
 .confirm-cancel-buttons {
   margin: auto;
+  font-size: 2.2vh;
+}
+
+#confirm-button {
+  color: #46d246;
+  border: 2px solid #46d246;
+  border-radius: 5px;
+  padding: 10%;
+}
+
+#cancel-button {
+  color: #ff3c1a;
+  border: 2px solid #ff3c1a;
+  border-radius: 5px;
+  padding: 10%;
 }
 
 .page {
@@ -260,6 +252,8 @@ header {
   color: white;
   background-color: #f7b733;
   margin: 1.2vmin 2vmin 1.2vmin auto;
+  transition-property: background-color;
+  transition-duration: 0.5s;
 }
 
 footer {                                          /* Footer */
@@ -291,6 +285,49 @@ footer {                                          /* Footer */
 
 
 @media only screen and (min-width: 750px) {         /* Media queries */
+
+  #bulbasaur:hover {
+    background-color: var(--primary-green);
+    transition-property: background-color;
+    transition-duration: 0.8s;
+  }
+
+  #charmander:hover {
+    background-color: var(--primary-red);
+    transition-property: background-color;
+    transition-duration: 0.8s;
+  }
+
+  #squirtle:hover {
+    background-color: var(--primary-blue);
+    transition-property: background-color;
+    transition-duration: 0.8s;
+  }
+
+  #cancel-button:hover {
+    color: #ff3c1a;
+    border-color: #ff3c1a;
+    transition-property: color border-color;
+    transition-duration: 0.8s;
+  }
+
+  #confirm-button:hover {
+    color: #46d246;
+    border-color: #46d246;
+    transition-property: color border-color;
+    transition-duration: 0.8s;
+  }
+
+  #confirm-button {
+    color: #000;
+    border: 2px solid #000;
+  }
+
+  #cancel-button {
+    color: #000;
+    border: 2px solid #000;
+  }
+
   .menue {
     height: 100%;
     grid-template-rows: 100%;
