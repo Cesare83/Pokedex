@@ -9,7 +9,8 @@ var pokemonRepository = (function() {
   var $dialogContainer = document.querySelector('#dialog-container');
   //details-menue var:
   var $detailsMenue = document.querySelector('#details-menue');
-  //dialog
+  //favourite pokemon options:
+  var favouritePokemon;
 
   //show-details function:
   function showDetails(item) {
@@ -75,22 +76,27 @@ var pokemonRepository = (function() {
   }
 
   function showDialog() {
-  //activating dialog buttons:
+    //activating dialog buttons:
     var $bulbasaurButton = document.querySelector('#bulbasaur-button');
     var $charmanderButton = document.querySelector('#charmander-button');
     var $squirtleButton = document.querySelector('#squirtle-button');
+
+    //changing value of favouritePokemon upon choice:
     $bulbasaurButton.addEventListener('click', function(event) {
-      confirmChoice(0);
+      favouritePokemon = 0;
+      confirmChoice();
     });
     $charmanderButton.addEventListener('click', function(event) {
-      confirmChoice(1);
+      favouritePokemon = 1;
+      confirmChoice();
     });
     $squirtleButton.addEventListener('click', function(event) {
-      confirmChoice(2);
+      favouritePokemon = 2;
+      confirmChoice();
     });
   }
 
-  function confirmChoice(number) {
+  function confirmChoice() {
     var $dialogButtons = document.querySelector('#dialog-buttons');
     var $dialogText = document.querySelector('#dialog-text');
 
@@ -104,7 +110,7 @@ var pokemonRepository = (function() {
       hideConfirmChoice();
     });
     $confirmButton.addEventListener('click', function(event) {
-      changeColor(number);
+      changeColor();
     });
   }
 
@@ -117,11 +123,11 @@ var pokemonRepository = (function() {
     $dialogText.innerHTML = 'Choose your favourite pokemon:';
   }
 
-  function changeColor(number) {
+  function changeColor() {
     var $header = document.querySelector('header');
     var $pokedex = document.querySelector('.pokedex');
 
-    switch(number) {
+    switch(favouritePokemon) {
       case 0:
       $header.classList.add('green-background');
       $pokedex.classList.add('green-borders');
