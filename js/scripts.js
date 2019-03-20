@@ -84,29 +84,46 @@ var pokemonRepository = (function() {
     //changing value of favouritePokemon upon choice:
     $bulbasaurButton.addEventListener('click', function(event) {
       favouritePokemon = 0;
-      confirmChoice();
+      confirmChoice("bulbasaur");
     });
     $charmanderButton.addEventListener('click', function(event) {
       favouritePokemon = 1;
-      confirmChoice();
+      confirmChoice("charmander");
     });
     $squirtleButton.addEventListener('click', function(event) {
       favouritePokemon = 2;
-      confirmChoice();
+      confirmChoice("squirtle");
     });
   }
 
-  function confirmChoice() {
+  function confirmChoice(string) {
     var $dialogButtons = document.querySelector('#dialog-buttons');
     var $dialogText = document.querySelector('#dialog-text');
+    var $buttonImage = document.querySelector('#'+string);
+    var $buttonBulbasaur = document.querySelector('#bulbasaur');
+    var $buttonCharmander = document.querySelector('#charmander');
+    var $buttonSquirtle = document.querySelector('#squirtle');
+
+    //first remove color previous selection:
+    $buttonBulbasaur.classList.remove('bulbasaur-background');
+    $buttonCharmander.classList.remove('charmander-background');
+    $buttonSquirtle.classList.remove('squirtle-background');
+
+    //then activate the color selection of the current selected one:
+    $buttonImage.classList.add(string+'-background');
 
     $dialogText.innerHTML = '';
-    $dialogText.innerHTML = 'Please confirm or cancel:';
+    $dialogText.innerHTML = 'you selected '+string;
 
     $dialogButtons.classList.add('is-visible');
     var $cancelButton = document.querySelector('#cancel-button');
     var $confirmButton = document.querySelector('#confirm-button');
     $cancelButton.addEventListener('click', function(event) {
+      //remove selection color from the selected one:
+      $buttonBulbasaur.classList.remove('bulbasaur-background');
+      $buttonCharmander.classList.remove('charmander-background');
+      $buttonSquirtle.classList.remove('squirtle-background');
+      //hide confirm/cancel buttons:
       hideConfirmChoice();
     });
     $confirmButton.addEventListener('click', function(event) {

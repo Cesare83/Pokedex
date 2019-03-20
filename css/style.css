@@ -31,6 +31,40 @@ button {
   outline: inherit;
 }
 
+.details-button:hover {                                   /*hover effects*/
+  background-color: #ffd700;
+}
+
+#bulbasaur:hover {
+  background-color: var(--primary-green);
+  transition-property: background-color;
+  transition-duration: 0.8s;
+}
+
+#charmander:hover {
+  background-color: var(--primary-red);
+  transition-property: background-color;
+  transition-duration: 0.8s;
+}
+
+#squirtle:hover {
+  background-color: var(--primary-blue);
+  transition-property: background-color;
+  transition-duration: 0.8s;
+}
+
+.bulbasaur-background {
+  background-color: var(--primary-green);
+}
+
+.charmander-background {
+  background-color: var(--primary-red);
+}
+
+.squirtle-background {
+  background-color: var(--primary-blue);
+}
+
 .green-background {
   background-color: var(--primary-green);
   color: white;
@@ -44,10 +78,6 @@ button {
 .blue-background {
   background-color: var(--primary-blue);
   color: white;
-}
-
-.details-button:hover {                                   /*hover effects*/
-  background-color: #ffd700;
 }
 
 #dialog-container {                              /*Modal Container*/
@@ -285,24 +315,6 @@ footer {                                          /* Footer */
 
 
 @media only screen and (min-width: 750px) {         /* Media queries */
-
-  #bulbasaur:hover {
-    background-color: var(--primary-green);
-    transition-property: background-color;
-    transition-duration: 0.8s;
-  }
-
-  #charmander:hover {
-    background-color: var(--primary-red);
-    transition-property: background-color;
-    transition-duration: 0.8s;
-  }
-
-  #squirtle:hover {
-    background-color: var(--primary-blue);
-    transition-property: background-color;
-    transition-duration: 0.8s;
-  }
 
   #cancel-button:hover {
     color: #ff3c1a;
